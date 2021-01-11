@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1105 &110500000
+HumanTemplate:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Slime_Humanoid
+  m_BoneTemplate:
+    Chest: "\u4E0A\u534A\u8EAB"
+    Head: "\u982D"
+    Hips: Slime_Arm
+    Jaw: "\u4E21\u76EE\u5148"
+    Left Index Distal: "\u4EBA\u6307\uFF13.L"
+    Left Index Intermediate: "\u4EBA\u6307\uFF12.L"
+    Left Index Proximal: "\u4EBA\u6307\uFF11.L"
+    Left Little Distal: "\u5C0F\u6307\uFF13.L"
+    Left Little Intermediate: "\u5C0F\u6307\uFF12.L"
+    Left Little Proximal: "\u5C0F\u6307\uFF11.L"
+    Left Middle Distal: "\u4E2D\u6307\uFF13.L"
+    Left Middle Intermediate: "\u4E2D\u6307\uFF12.L"
+    Left Middle Proximal: "\u4E2D\u6307\uFF11.L"
+    Left Ring Distal: "\u85AC\u6307\uFF13.L"
+    Left Ring Intermediate: "\u85AC\u6307\uFF12.L"
+    Left Ring Proximal: "\u85AC\u6307\uFF11.L"
+    Left Thumb Distal: "\u89AA\u6307\u5148.L"
+    Left Thumb Intermediate: "\u89AA\u6307\uFF12.L"
+    Left Thumb Proximal: "\u89AA\u6307\uFF11.L"
+    LeftEye: "\u76EE\u5148.L"
+    LeftFoot: "\u3064\u307E\u5148\uFF29\uFF2B\u5148.L"
+    LeftHand: "\u624B\u6369.L"
+    LeftLowerArm: "\u3072\u3058.L"
+    LeftLowerLeg: "\u3064\u307E\u5148\uFF29\uFF2B.L"
+    LeftShoulder: "\u80A9.L"
+    LeftUpperArm: "\u8155.L"
+    LeftUpperLeg: "\u8DB3\uFF29\uFF2B.L"
+    Neck: "\u9996"
+    Right Index Distal: "\u4EBA\u6307\uFF13.R"
+    Right Index Intermediate: "\u4EBA\u6307\uFF12.R"
+    Right Index Proximal: "\u4EBA\u6307\uFF11.R"
+    Right Little Distal: "\u5C0F\u6307\uFF13.R"
+    Right Little Intermediate: "\u5C0F\u6307\uFF12.R"
+    Right Little Proximal: "\u5C0F\u6307\uFF11.R"
+    Right Middle Distal: "\u4E2D\u6307\uFF13.R"
+    Right Middle Intermediate: "\u4E2D\u6307\uFF12.R"
+    Right Middle Proximal: "\u4E2D\u6307\uFF11.R"
+    Right Ring Distal: "\u85AC\u6307\uFF13.R"
+    Right Ring Intermediate: "\u85AC\u6307\uFF12.R"
+    Right Ring Proximal: "\u85AC\u6307\uFF11.R"
+    Right Thumb Distal: "\u89AA\u6307\u5148.R"
+    Right Thumb Intermediate: "\u89AA\u6307\uFF12.R"
+    Right Thumb Proximal: "\u89AA\u6307\uFF11.R"
+    RightEye: "\u76EE\u5148.R"
+    RightFoot: "\u3064\u307E\u5148\uFF29\uFF2B\u5148.R"
+    RightHand: "\u624B\u6369.R"
+    RightLowerArm: "\u3072\u3058.R"
+    RightLowerLeg: "\u3064\u307E\u5148\uFF29\uFF2B.R"
+    RightShoulder: "\u80A9.R"
+    RightUpperArm: "\u8155.R"
+    RightUpperLeg: "\u8DB3\uFF29\uFF2B.R"
+    Spine: "\u30BB\u30F3\u30BF\u30FC"
+    UpperChest: "\u4E0A\u534A\u8EAB 2"
