@@ -67,6 +67,8 @@
     <Compile Include="Assets\Data\Shader\Toon\Editor\RemoveUnusedMaterialProperties.cs" />
     <Compile Include="Assets\Data\Shader\Toon\Editor\RemoveUnusedShaderKeywordsFromUTS2Material.cs" />
     <Compile Include="Assets\Data\Shader\Toon\Editor\UTS2GUI.cs" />
+    <Compile Include="Assets\Editor\CharClassEditor.cs" />
+    <Compile Include="Assets\Editor\GameDataEditor.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -249,9 +251,6 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.4f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-Editor-firstpass">
-      <HintPath>D:/Creations/Games/FantasyBarrierStories/FantasyBarrierStories/Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.VR">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.4f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>

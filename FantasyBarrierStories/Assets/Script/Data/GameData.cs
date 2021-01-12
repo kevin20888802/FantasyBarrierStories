@@ -14,6 +14,9 @@ namespace FBS.Data
         /// </summary>
         public string name;
 
-
+        public GameData(string i_name)
+        {
+            name = i_name;
+        }
     }
 }

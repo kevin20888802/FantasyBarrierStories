@@ -71,6 +71,7 @@
     <Compile Include="Assets\Script\Data\GameData.cs" />
     <Compile Include="Assets\Script\Data\GlobalSettings.cs" />
     <Compile Include="Assets\Script\DataManager.cs" />
+    <Compile Include="Assets\Script\DataMode.cs" />
     <None Include="Assets\Data\Shader\Toon\Shader\Toon_DoubleShadeWithFeather_Mobile_TransClipping_StencilMask.shader" />
     <None Include="Assets\Data\Shader\Toon\Shader\Toon_ShadingGradeMap_Mobile_StencilMask.shader" />
     <None Include="Assets\Data\Shader\Toon\Shader\UCTS_DoubleShadeWithFeather.cginc" />

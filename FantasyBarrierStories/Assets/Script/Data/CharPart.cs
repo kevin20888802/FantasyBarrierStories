@@ -20,7 +20,12 @@
         /// </summary>
         private string MdlPath;
 
-        public CharPart(string i_name, string i_des, string i_mdlPath)
+        public CharPart(string i_name) : base(i_name)
+        {
+            
+        }
+
+        public CharPart(string i_name, string i_des, string i_mdlPath) : base(i_name)
         {
             PartName = i_name;
             PartDescription = i_des;
