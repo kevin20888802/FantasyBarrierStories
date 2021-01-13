@@ -10,14 +10,24 @@ using System.IO;
 public class DataManager
 {
     public static DataManager instance;
+    /// <summary>
+    /// 資料讀取模式。
+    /// InGame = 遊戲內, Editor = 編輯器。
+    /// </summary>
     public static DataMode dataMode;
+    /// <summary>
+    /// 資料路徑。
+    /// </summary>
     public static Dictionary<string, string> DataPaths;
 
     /// <summary>
     /// 所有角色職業
     /// </summary>
-    public List<CharClass> CharClasses;
-
+    public GameDataCollection<CharClass> CharClasses;
+    /// <summary>
+    /// 所有角色配件。
+    /// </summary>
+    public GameDataCollection<CharPart> CharParts;
     public DataManager(DataMode i_mode)
     {
         if (instance == null)
@@ -36,7 +46,7 @@ public class DataManager
     /// </summary>
     public void Init()
     {
-        CharClasses = LoadData<CharClass>(DataPaths["CharClasses"]);
+        CharClasses = new GameDataCollection<CharClass>(LoadData<CharClass>(DataPaths["CharClasses"]));
     }
 
     /// <summary>
@@ -45,14 +55,14 @@ public class DataManager
     /// <typeparam name="T">資料類型，必須是遊戲資料GameData類。</typeparam>
     /// <param name="i_path">資料夾路徑。</param>
     /// <param name="i_data">資料類型清單，必須是遊戲資料GameData類。</param>
-    public static void SaveData<T>(string i_path, List<T> i_data) where T : GameData
+    public static void SaveData<T>(string i_path, GameDataCollection<T> i_data) where T : GameData
     {
         if (dataMode == DataMode.Editor)
         {
             string _realPath = Application.dataPath + "/Resources/" + i_path.Replace("Assets", "");
-            for (int i = 0; i < i_data.Count; i++)
+            for (int i = 0; i < i_data.DataCount(); i++)
             {
-                string _fileName = _realPath + "/" + i_data[i].name + ".json";
+                string _fileName = _realPath + "/" + i_data.GetData(i).name + ".json";
                 if (!Directory.Exists(_realPath))
                 {
                     Directory.CreateDirectory(_realPath);
@@ -61,8 +71,8 @@ public class DataManager
                 {
                     File.Create(_fileName).Close();
                 }
-                File.WriteAllText(_fileName,JsonConvert.SerializeObject(i_data[i]));
-                Debug.Log("Saving Data:" + _fileName);
+                File.WriteAllText(_fileName,JsonConvert.SerializeObject(i_data.GetData(i)));
+                Debug.Log("DataManager:" + "Saving Data - " + _fileName);
             }
         }
     }
@@ -84,7 +94,7 @@ public class DataManager
         else
         {
             _loadedDatas = AssetDataBaseHelper.LoadAllAssetAtPath<TextAsset>("Assets/Resources/" + i_path);
-            Debug.Log(_loadedDatas.Length);
+            //Debug.Log(_loadedDatas.Length);
         }
         for (int i = 0; i < _loadedDatas.Length; i++)
         {

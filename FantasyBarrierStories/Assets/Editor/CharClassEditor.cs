@@ -6,7 +6,7 @@ using UnityEditorInternal;
 
 public class CharClassEditor : GameDataEditor
 {
-    public List<CharClass> all_data;
+    public GameDataCollection<CharClass> all_data;
 
     [MenuItem("遊戲資料/角色職業")]
     public static void ShowWindow()
@@ -42,19 +42,19 @@ public class CharClassEditor : GameDataEditor
     public override void AddData()
     {
         base.AddData();
-        all_data.Add(new CharClass("CharClass_" + all_data.Count));
+        all_data.AddData(new CharClass("CharClass_" + all_data.DataCount()));
     }
 
     public override void DeleteData()
     {
         base.DeleteData();
-        if (all_data.Count > 0)
+        if (all_data.DataCount() > 0)
         {
             all_data.RemoveAt(dataIndex);
             dataIndex = dataIndex - 1;
             if (dataIndex < 0)
             {
-                dataIndex = all_data.Count - 1;
+                dataIndex = all_data.DataCount() - 1;
             }
         }
     }

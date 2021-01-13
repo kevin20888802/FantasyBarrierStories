@@ -29,7 +29,7 @@ public class GameDataEditor : EditorWindow
         LoadData();
     }
 
-    public void DataList<T>(List<T> i_data, Vector2 i_size) where T : GameData
+    public void DataList<T>(GameDataCollection<T> i_data, Vector2 i_size) where T : GameData
     {
         if (GUILayout.Button("新增",GUILayout.Width(i_size.x - 15)))
         {
@@ -40,9 +40,10 @@ public class GameDataEditor : EditorWindow
             DeleteData();
         }
         List<string> dataNames = new List<string>();
-        for (int i = 0; i < i_data.Count; i++)
+        int _dataCount = i_data.DataCount();
+        for (int i = 0; i < _dataCount; i++)
         {
-            dataNames.Add(i_data[i].name);
+            dataNames.Add(i_data.GetData(i).name);
         }
         dataIndex = GUILayout.SelectionGrid(dataIndex, dataNames.ToArray(), 1, GUILayout.Width(i_size.x - 15));
     }
