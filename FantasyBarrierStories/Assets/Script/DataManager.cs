@@ -60,6 +60,9 @@ public class DataManager
         if (dataMode == DataMode.Editor)
         {
             string _realPath = Application.dataPath + "/Resources/" + i_path.Replace("Assets", "");
+            Dictionary<string, string> _fileNames = new Dictionary<string, string>();
+
+            // 儲存現有資料到檔案
             for (int i = 0; i < i_data.DataCount(); i++)
             {
                 string _fileName = _realPath + "/" + i_data.GetData(i).name + ".json";
@@ -72,7 +75,19 @@ public class DataManager
                     File.Create(_fileName).Close();
                 }
                 File.WriteAllText(_fileName,JsonConvert.SerializeObject(i_data.GetData(i)));
-                Debug.Log("DataManager:" + "Saving Data - " + _fileName);
+                _fileNames.Add(Path.GetFileName(_fileName), i_data.GetData(i).name);
+                Debug.Log("DataManager:" + "儲存遊戲資料 - " + _fileName);
+            }
+
+            // 刪除未在清單的資料
+            string[] _realFiles = Directory.GetFiles(_realPath + "/");
+            for (int i = 0; i < _realFiles.Length; i++)
+            {
+                if (!_fileNames.ContainsKey(Path.GetFileName(_realFiles[i])))
+                {
+                    File.Delete(_realFiles[i]);
+                    Debug.Log("DataManager:" + "刪除遊戲資料 - " + _realFiles[i]);
+                }
             }
         }
     }
@@ -102,4 +117,7 @@ public class DataManager
         }
         return o_data;
     }
+
+
+
 }

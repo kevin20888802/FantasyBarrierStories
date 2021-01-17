@@ -1,12 +1,12 @@
 ﻿using UnityEditor;
-using System.Collections.Generic;
 using FBS.Data;
 using UnityEngine;
-using UnityEditorInternal;
 
 public class CharClassEditor : GameDataEditor
 {
     public GameDataCollection<CharClass> all_data;
+
+    public Sprite ClassIcon;
 
     [MenuItem("遊戲資料/角色職業")]
     public static void ShowWindow()
@@ -28,13 +28,17 @@ public class CharClassEditor : GameDataEditor
             SaveData();
         }
         EditorGUILayout.BeginHorizontal();
+        #region 資料清單
         WindowPos[0] = EditorGUILayout.BeginScrollView(WindowPos[0], GUILayout.Width((WindowSize.x - 15) * 0.25f), GUILayout.Height(WindowSize.y - 100));
-        EditorGUILayout.BeginVertical();
         DataList(all_data,new Vector2((WindowSize.x - 15) * 0.25f, WindowSize.y - 100));
-        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndScrollView();
+        #endregion
+        #region 資料編輯
         WindowPos[1] = EditorGUILayout.BeginScrollView(WindowPos[1], GUILayout.Width((WindowSize.x) * 0.75f), GUILayout.Height(WindowSize.y - 100));
+        all_data.GetData(dataIndex).name = EditorGUILayout.TextField("資料檔案名稱", all_data.GetData(dataIndex).name);
+        GameDataAssetField<Sprite>(ref ClassIcon, ref all_data.GetData(dataIndex).Icon);
         EditorGUILayout.EndScrollView();
-        EditorGUILayout.EndScrollView();
+        #endregion
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndVertical();
     }

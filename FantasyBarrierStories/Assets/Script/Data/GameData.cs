@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace FBS.Data
+﻿namespace FBS.Data
 {
     /// <summary>
     /// 遊戲資料基本，只用於資料類。
