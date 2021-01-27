@@ -69,6 +69,7 @@
     <Compile Include="Assets\Data\Shader\Toon\Editor\UTS2GUI.cs" />
     <Compile Include="Assets\Editor\CharClassEditor.cs" />
     <Compile Include="Assets\Editor\GameDataEditor.cs" />
+    <Compile Include="Assets\Editor\LangTableEditor.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -676,6 +677,10 @@
     <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
       <Project>{3FED84E0-09CC-1783-A2F2-01B52731AF9A}</Project>
       <Name>Unity.CollabProxy.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AssetBundleBrowser.Editor.csproj">
+      <Project>{D867D3E2-856A-E4FB-5452-7775B7C00C28}</Project>
+      <Name>Unity.AssetBundleBrowser.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{0B9572FA-F643-B686-44DA-F906DC7B6950}</Project>

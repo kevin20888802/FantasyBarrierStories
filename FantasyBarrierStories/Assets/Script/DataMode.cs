@@ -1,7 +1,10 @@
-﻿/// <summary>
-/// 資料取得模式。
-/// </summary>
-public enum DataMode
+﻿namespace FBS.Main
 {
-    InGame, Editor
+    /// <summary>
+    /// 資料取得模式。
+    /// </summary>
+    public enum DataMode
+    {
+        InGame, Editor
+    }
 }

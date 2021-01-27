@@ -74,6 +74,9 @@
     <Compile Include="Assets\Script\Data\GlobalSettings.cs" />
     <Compile Include="Assets\Script\DataManager.cs" />
     <Compile Include="Assets\Script\DataMode.cs" />
+    <Compile Include="Assets\Script\LangManager.cs" />
+    <Compile Include="Assets\Script\LanguageType.cs" />
+    <Compile Include="Assets\Script\LocalizationUI.cs" />
     <None Include="Assets\Data\Shader\Toon\Shader\Toon_DoubleShadeWithFeather_Mobile_TransClipping_StencilMask.shader" />
     <None Include="Assets\Data\Shader\Toon\Shader\Toon_ShadingGradeMap_Mobile_StencilMask.shader" />
     <None Include="Assets\Data\Shader\Toon\Shader\UCTS_DoubleShadeWithFeather.cginc" />
@@ -702,6 +705,10 @@
     <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
       <Project>{3FED84E0-09CC-1783-A2F2-01B52731AF9A}</Project>
       <Name>Unity.CollabProxy.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AssetBundleBrowser.Editor.csproj">
+      <Project>{D867D3E2-856A-E4FB-5452-7775B7C00C28}</Project>
+      <Name>Unity.AssetBundleBrowser.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{0B9572FA-F643-B686-44DA-F906DC7B6950}</Project>

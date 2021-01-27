@@ -1,71 +1,76 @@
 ﻿using UnityEditor;
-using FBS.Data;
 using UnityEngine;
+using FBS.Data;
+using FBS.Main;
 
-public class CharClassEditor : GameDataEditor
+namespace FBS.Editor
 {
-    public GameDataCollection<CharClass> all_data;
-
-    public Sprite ClassIcon;
-
-    [MenuItem("遊戲資料/角色職業")]
-    public static void ShowWindow()
+    public class CharClassEditor : GameDataEditor
     {
-        EditorWindow.GetWindow(typeof(CharClassEditor), false, "角色職業", false);
-    }
+        public GameDataCollection<CharClass> all_data;
 
-    public override void LoadData()
-    {
-        base.LoadData();
-        all_data = DM.CharClasses;
-    }
+        public Sprite ClassIcon;
 
-    public void OnGUI()
-    {
-        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-        if (GUILayout.Button("儲存"))
+        [MenuItem("遊戲資料/角色職業")]
+        public static void ShowWindow()
         {
-            SaveData();
+            EditorWindow.GetWindow(typeof(CharClassEditor), false, "角色職業", false);
         }
-        EditorGUILayout.BeginHorizontal();
-        #region 資料清單
-        WindowPos[0] = EditorGUILayout.BeginScrollView(WindowPos[0], GUILayout.Width((WindowSize.x - 15) * 0.25f), GUILayout.Height(WindowSize.y - 100));
-        DataList(all_data,new Vector2((WindowSize.x - 15) * 0.25f, WindowSize.y - 100));
-        EditorGUILayout.EndScrollView();
-        #endregion
-        #region 資料編輯
-        WindowPos[1] = EditorGUILayout.BeginScrollView(WindowPos[1], GUILayout.Width((WindowSize.x) * 0.75f), GUILayout.Height(WindowSize.y - 100));
-        all_data.GetData(dataIndex).name = EditorGUILayout.TextField("資料檔案名稱", all_data.GetData(dataIndex).name);
-        GameDataAssetField<Sprite>(ref ClassIcon, ref all_data.GetData(dataIndex).Icon);
-        EditorGUILayout.EndScrollView();
-        #endregion
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.EndVertical();
-    }
 
-    public override void AddData()
-    {
-        base.AddData();
-        all_data.AddData(new CharClass("CharClass_" + all_data.DataCount()));
-    }
-
-    public override void DeleteData()
-    {
-        base.DeleteData();
-        if (all_data.DataCount() > 0)
+        public override void LoadData()
         {
-            all_data.RemoveAt(dataIndex);
-            dataIndex = dataIndex - 1;
-            if (dataIndex < 0)
+            base.LoadData();
+            all_data = DM.CharClasses;
+        }
+
+        public void OnGUI()
+        {
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+            if (GUILayout.Button("儲存"))
             {
-                dataIndex = all_data.DataCount() - 1;
+                SaveData();
+            }
+            EditorGUILayout.BeginHorizontal();
+            #region 資料清單
+            WindowPos[0] = EditorGUILayout.BeginScrollView(WindowPos[0], GUILayout.Width((WindowSize.x - 15) * 0.25f), GUILayout.Height(WindowSize.y - 100));
+            DataList(all_data, new Vector2((WindowSize.x - 15) * 0.25f, WindowSize.y - 100));
+            EditorGUILayout.EndScrollView();
+            #endregion
+            #region 資料編輯
+            WindowPos[1] = EditorGUILayout.BeginScrollView(WindowPos[1], GUILayout.Width((WindowSize.x) * 0.75f), GUILayout.Height(WindowSize.y - 100));
+            all_data.GetData(dataIndex).name = EditorGUILayout.TextField("資料檔案名稱", all_data.GetData(dataIndex).name);
+            GameDataAssetField<Sprite>(ref ClassIcon, ref all_data.GetData(dataIndex).Icon);
+            EditorGUILayout.EndScrollView();
+            #endregion
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndVertical();
+        }
+
+        public override void AddData()
+        {
+            base.AddData();
+            all_data.AddData(new CharClass("CharClass_" + all_data.DataCount()));
+        }
+
+        public override void DeleteData()
+        {
+            base.DeleteData();
+            if (all_data.DataCount() > 0)
+            {
+                all_data.RemoveAt(dataIndex);
+                dataIndex -= 1;
+                if (dataIndex < 0)
+                {
+                    dataIndex = all_data.DataCount() - 1;
+                }
             }
         }
+
+        public override void SaveData()
+        {
+            base.SaveData();
+            DataManager.SaveData<CharClass>(DataManager.DataPaths["CharClasses"], all_data);
+        }
     }
 
-    public override void SaveData()
-    {
-        base.SaveData();
-        DataManager.SaveData<CharClass>(DataManager.DataPaths["CharClasses"], all_data);
-    }
 }
