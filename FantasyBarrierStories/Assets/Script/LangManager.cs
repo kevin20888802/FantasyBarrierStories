@@ -20,6 +20,14 @@ namespace FBS.Main
         /// </summary>
         public Dictionary<string, string> StringTable;
 
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+        }
+
         public void Start()
         {
             LoadLangTable();
@@ -30,11 +38,12 @@ namespace FBS.Main
         /// </summary>
         public void LoadLangTable()
         {
-            TextAsset LangFile = Resources.Load<TextAsset>("GameData/Languages/" + "Lang_" + Lang.ToString() + ".json");
+            TextAsset LangFile = Resources.Load<TextAsset>("GameData/Languages/" + "Lang_" + Lang.ToString());
             // 如果有語言檔案就載入字詞表
             if (LangFile != null)
             {
-                JsonConvert.DeserializeObject<Dictionary<string, string>>(LangFile.text);
+                StringTable = JsonConvert.DeserializeObject<Dictionary<string, string>>(LangFile.text);
+                Debug.Log("Loaded Language:" + LangFile.name);
             }
         }
     }

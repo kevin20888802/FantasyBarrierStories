@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace FBS.Editor
 {
+    /// <summary>
+    /// 語言字詞表編輯器
+    /// </summary>
     public class LangTableEditor : GameDataEditor
     {
         private LanguageType _oldLang;
@@ -33,9 +36,13 @@ namespace FBS.Editor
         /// </summary>
         public Dictionary<string, string> EditTable;
 
+        /// <summary>
+        /// 目前頁數
+        /// </summary>
         int currPage = 1;
+
+        // 最底下的即將加入的新值
         string preAddKey = "";
-        string preAddValue = "";
 
         [MenuItem("遊戲資料/語言")]
         public static void ShowWindow()
@@ -70,7 +77,9 @@ namespace FBS.Editor
             WindowPos[1] = EditorGUILayout.BeginScrollView(WindowPos[1], GUILayout.Width((WindowSize.x) * 0.75f), GUILayout.Height(WindowSize.y - 100));
             try
             {
-                foreach (string key in ENTable.Keys)
+                string[] theKeys = new string[ENTable.Keys.Count];
+                ENTable.Keys.CopyTo(theKeys, 0);
+                foreach (string key in theKeys)
                 {
                     ENTable[key] = key;
                     if (!EditTable.ContainsKey(key))
@@ -123,10 +132,9 @@ namespace FBS.Editor
             EditorGUILayout.LabelField("\t--\t");
             if (GUILayout.Button("+"))
             {
-                ENTable.Add(preAddKey,preAddValue);
-                EditTable.Add(preAddKey, preAddValue);
+                ENTable.Add(preAddKey, preAddKey);
+                EditTable.Add(preAddKey, preAddKey);
                 preAddKey = "";
-                preAddValue = "";
             }
             EditorGUILayout.EndHorizontal();
 
@@ -182,7 +190,7 @@ namespace FBS.Editor
         {
             base.SaveData();
             string _realPath = Application.dataPath + "/Resources/GameData/Languages";
-            Debug.Log(JsonConvert.SerializeObject(ENTable));
+            //Debug.Log(JsonConvert.SerializeObject(ENTable));
             File.WriteAllText(_realPath + "/" + "Lang_" + "EN" + ".json", JsonConvert.SerializeObject(ENTable));
             File.WriteAllText(_realPath + "/" + "Lang_" + Lang.ToString() + ".json", JsonConvert.SerializeObject(EditTable));
             AssetDatabase.Refresh();

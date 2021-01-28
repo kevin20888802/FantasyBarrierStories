@@ -3,11 +3,14 @@ using UnityEngine.UI;
 
 namespace FBS.Main
 {
+    /// <summary>
+    /// 多語言UI，如果有文字要多語言就把那個Gameobject掛上這個。
+    /// </summary>
     public class LocalizationUI : MonoBehaviour
     {
         public Text Text;
 
-        public void Awake()
+        public void Start()
         {
             // 如果沒有UI文字則嘗試尋找
             if (Text == null)

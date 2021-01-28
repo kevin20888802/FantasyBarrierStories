@@ -7,6 +7,9 @@ using System.IO;
 
 namespace FBS.Main
 {
+    /// <summary>
+    /// 遊戲資料系統
+    /// </summary>
     public class DataManager
     {
         public static DataManager instance;
